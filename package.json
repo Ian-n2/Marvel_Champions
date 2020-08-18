@@ -1,0 +1,27 @@
+{
+  "name": "marcel-champions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "node ./server.js",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "prettier": "^2.0.5"
+  }
+}
