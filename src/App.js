@@ -9,14 +9,12 @@ class App extends React.Component {
     this.state = {
       villain: [],
       hero: [],
-      mainScheme:[],
-      sideScheme:[],
+      mainScheme:null,
+      sideScheme:null,
       data: []
     }
-    this.sort = this.sort.bind(this)
+    this.sort =this.sort.bind(this)
     this.schemeSort = this.schemeSort.bind(this)
-    this.trimSideScheme = this.trimSideScheme.bind(this)
-    this.sorting = this.sorting.bind(this)
   }
   sort(){
     const hero = []
@@ -35,38 +33,27 @@ class App extends React.Component {
     console.log(villain)
   }
 
-  trimSideScheme(sideScheme){
-    var newSideScheme = []
-    for (let card in sideScheme) {
-      if (card.real_name === "Collapsing Bridge")
-      sideScheme.push(card)
-
-    }
-    return sideScheme;
-    this.setState({sideScheme:sideScheme})
-  };
-
-  sorting(){
-    const selectedMainScheme = randomScheme(this.state.mainScheme)
-    const selectedSideScheme = randomScheme(this.state.sideScheme)
-    this.setState({mainScheme:selectedMainScheme, sideScheme:selectedSideScheme})
-  }
-
   schemeSort(){
     const hero = []
+    const sideScheme = []
+    const mainScheme = []
     this.state.data.forEach(card => {
-      if (card.card_set_type_name_code != "modular" && card.card_set_type_name_code != "villain"){
-        hero.push(card)
+      if (card.type_code === "villain" && card.health_per_hero === true)
+      {  mainScheme.push(card)
       }else if
       (card.type_code === "side_scheme" && card.card_set_type_name_code === "modular") {
-        this.state.sideScheme.push(card)
-      }else{
-        (card.is_unique === true && card.health_per_hero === true)
-        this.state.mainScheme.push(card)
+        sideScheme.push(card)
+      }else {
+        hero.push(card)
       }
+      console.log(mainScheme)
     })
-    this.trimSideScheme(this.state.sideScheme)
-    this.sorting()
+
+    const selectedMainScheme = randomScheme(mainScheme)
+    const selectedSideScheme = randomScheme(sideScheme)
+
+    this.setState({mainScheme:selectedMainScheme, sideScheme:selectedSideScheme})
+
   }
 
 
