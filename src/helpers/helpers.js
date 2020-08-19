@@ -25,3 +25,10 @@ function shuffle(array) {
 }
 
 // build loop
+// trying to fliter villains to have one of each in the array.
+//work on this step tomorrow
+function trimVillains(villain){
+  var trimArray = []
+  for (let card in villain)
+  if
+}
