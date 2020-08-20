@@ -37,19 +37,20 @@ class App extends React.Component {
     const hero = []
     const sideScheme = []
     const mainScheme = []
-    const schemeNames = []
+    const schemeNames = ["Bulldozer", "Piledriver", "Thunderball"]
+    const sideSchemeNames = ["Goblin Nation", "Goblin Reinforcements", "Overrun", "Collapsing Bridge", "Oscorp Manufacturing", "Payoff"]
     this.state.data.forEach(card => {
       if (card.type_code === "villain" && card.health_per_hero === true &&
       !schemeNames.includes(card.real_name))
       {  mainScheme.push(card)
         schemeNames.push(card.real_name)
       }else if
-      (card.type_code === "side_scheme" && card.card_set_type_name_code === "modular") {
+      (card.type_code === "side_scheme" && card.card_set_type_name_code === "modular" && !sideSchemeNames.includes(card.real_name)) {
         sideScheme.push(card)
       }else {
         hero.push(card)
       }
-      console.log(mainScheme)
+      console.log(sideScheme)
     })
 
     const selectedMainScheme = randomScheme(mainScheme)
