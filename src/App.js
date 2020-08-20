@@ -37,9 +37,12 @@ class App extends React.Component {
     const hero = []
     const sideScheme = []
     const mainScheme = []
+    const schemeNames = []
     this.state.data.forEach(card => {
-      if (card.type_code === "villain" && card.health_per_hero === true)
+      if (card.type_code === "villain" && card.health_per_hero === true &&
+      !schemeNames.includes(card.real_name))
       {  mainScheme.push(card)
+        schemeNames.push(card.real_name)
       }else if
       (card.type_code === "side_scheme" && card.card_set_type_name_code === "modular") {
         sideScheme.push(card)
