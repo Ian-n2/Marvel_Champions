@@ -11,7 +11,7 @@ class SideScheme extends React.Component {
     return (
       <div>
       <h3>{this.props.selectedScheme.real_name}</h3>
-      <img style={{width: 150, height:150}} scr={this.props.selectedScheme.imagesrc}/>
+      <img src={this.props.selectedScheme.imagesrc}/>
       </div>
     );
   }

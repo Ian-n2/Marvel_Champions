@@ -11,7 +11,7 @@ class Scheme extends React.Component {
     return (
       <div>
       <h3>{this.props.selectedScheme.real_name}</h3>
-      <img style={{width: 300, height:300}}/>
+      <img src={this.props.selectedScheme.imagesrc}/>
       </div>
     );
   }
