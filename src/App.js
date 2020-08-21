@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Scheme from "./scheme/Scheme.js"
 import SideScheme from "./scheme/SideScheme.js"
+import WreckingCrew from "./scheme/WreckingCrew.js"
 import {randomScheme} from "./helpers/helpers.js"
 class App extends React.Component {
 
@@ -11,7 +12,9 @@ class App extends React.Component {
       hero: [],
       mainScheme:null,
       sideScheme:null,
-      data: []
+      data: [],
+      wrecker: true,
+      wreckingCrew:null
     }
     this.sort =this.sort.bind(this)
     this.schemeSort = this.schemeSort.bind(this)
@@ -37,32 +40,34 @@ class App extends React.Component {
     const hero = []
     const sideScheme = []
     const mainScheme = []
-    const schemeNames = ["Bulldozer", "Piledriver", "Thunderball"]
+    const wreckingCrew = []
+    const villainNames = ["Bulldozer", "Piledriver", "Thunderball"]
     const sideSchemeNames = ["Goblin Nation", "Goblin Reinforcements", "Overrun", "Collapsing Bridge", "Oscorp Manufacturing", "Payoff"]
+    const crewNames = ["Bulldozer", "Piledriver", "Thunderball"]
     this.state.data.forEach(card => {
       if (card.type_code === "villain" && card.health_per_hero === true &&
-      !schemeNames.includes(card.real_name))
+      !villainNames.includes(card.real_name))
       {  mainScheme.push(card)
-        schemeNames.push(card.real_name)
+        villainNames.push(card.real_name)
       }else if
       (card.type_code === "side_scheme" && card.card_set_type_name_code === "modular" && !sideSchemeNames.includes(card.real_name)) {
         sideScheme.push(card)
-      }else {
+      }else if
+      (crewNames.includes(card.real_name) && card.stage === 1)
+      { wreckingCrew.push(card)
+      }else{
         hero.push(card)
       }
-      console.log(sideScheme)
     })
+    console.log(wreckingCrew)
 
     const selectedMainScheme = randomScheme(mainScheme)
     const selectedSideScheme = randomScheme(sideScheme)
 
-    this.setState({mainScheme:selectedMainScheme, sideScheme:selectedSideScheme})
+
+    this.setState({mainScheme:selectedMainScheme, sideScheme:selectedSideScheme, wreckingCrew:wreckingCrew})
 
   }
-
-
-
-
   componentDidMount(){
     fetch("/api/public/cards/?encounter=1")
     .then(res => res.json())
@@ -75,13 +80,22 @@ class App extends React.Component {
   render() {
     const display = this.state.data.map(card => {
       return <p>{card.real_name}</p>
+
     })
+      let side
+      if (this.state.wrecker){
+        side = {this.state.wreckingCrew.map((wreckingCrew) => {
+          <WreckingCrew/>
+        }
+      }else{
+        side =  <SideScheme selectedScheme={this.state.sideScheme}/>
+      }
     return (
       <div>
       <button onClick={this.sort}>click</button>
       <button onClick={this.schemeSort}>Scheme</button>
       <Scheme selectedScheme={this.state.mainScheme}/>
-      <SideScheme selectedScheme={this.state.sideScheme}/>
+      {side}
       </div>
     );
   }
