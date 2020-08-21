@@ -14,6 +14,7 @@ class App extends React.Component {
       sideScheme:null,
       data: [],
       wrecker: true,
+      greenGoblin: true,
       wreckingCrew:null
     }
     this.sort =this.sort.bind(this)
@@ -76,26 +77,25 @@ class App extends React.Component {
 
     // .then(cards => console.log(console.log(new Set(cards.map(card => card.type_name).sort()))))
   }
+  // let side
+  // if (this.state.wrecker){
+  //   side = {this.state.wreckingCrew.map((wreckingCrew) => {
+  //     <WreckingCrew/>
+  //   }
+  // }else{
+  //   side =  <SideScheme selectedScheme={this.state.sideScheme}/>
+  // }
 
   render() {
     const display = this.state.data.map(card => {
       return <p>{card.real_name}</p>
-
     })
-      let side
-      if (this.state.wrecker){
-        side = {this.state.wreckingCrew.map((wreckingCrew) => {
-          <WreckingCrew/>
-        }
-      }else{
-        side =  <SideScheme selectedScheme={this.state.sideScheme}/>
-      }
     return (
       <div>
       <button onClick={this.sort}>click</button>
-      <button onClick={this.schemeSort}>Scheme</button>
+      <button src="./images/SCHEME.png" onClick={this.schemeSort}>Scheme</button>
       <Scheme selectedScheme={this.state.mainScheme}/>
-      {side}
+      <SideScheme selectedScheme={this.state.sideScheme}/>
       </div>
     );
   }
