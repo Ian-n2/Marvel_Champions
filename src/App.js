@@ -3,6 +3,8 @@ import Scheme from "./scheme/Scheme.js"
 import SideScheme from "./scheme/SideScheme.js"
 import WreckingCrew from "./scheme/WreckingCrew.js"
 import {randomScheme} from "./helpers/helpers.js"
+import './Stylesheet.css';
+
 class App extends React.Component {
 
   constructor(props){
@@ -91,10 +93,11 @@ class App extends React.Component {
       return <p>{card.real_name}</p>
     })
     return (
-      <div>
-      <button onClick={this.sort}>click</button>
-      <button src="./images/SCHEME.png" onClick={this.schemeSort}>Scheme</button>
-      <Scheme selectedScheme={this.state.mainScheme}/>
+      <div className="main">
+      <h1>Villain Finder</h1>
+      <button className="clicker" onClick={this.sort}>click</button>
+      <button className="scheme" onClick={this.schemeSort}>Scheme</button>
+      <Scheme  selectedScheme={this.state.mainScheme}/>
       <SideScheme selectedScheme={this.state.sideScheme}/>
       </div>
     );

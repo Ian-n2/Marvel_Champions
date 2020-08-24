@@ -1,0 +1,33 @@
+body{
+  background-image: url("./images/app_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main{
+  text-align: center;
+}
+
+h1{
+  margin: 0;
+  font-family: sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 50px
+
+}
+
+.scheme{
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.clicker{
+  text-align: left;
+}
+
+.name{
+  font-size: 50px;
+  font-family: sans-serif;
+}
