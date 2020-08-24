@@ -16,7 +16,7 @@ class App extends React.Component {
       sideScheme:null,
       data: [],
       wrecker: true,
-      greenGoblin: true,
+      greenGoblin: false,
       wreckingCrew:null
     }
     this.sort =this.sort.bind(this)
@@ -87,15 +87,25 @@ class App extends React.Component {
   // }else{
   //   side =  <SideScheme selectedScheme={this.state.sideScheme}/>
   // }
+// This is the dev button below. Put back in when woking on the app
+    // <button className="clicker" onClick={this.sort}>devTool</button>
+    //also put this in the render if you are putting the dev tools back.
+    // const display = this.state.data.map(card => {
+      // return <p>{card.real_name}</p>
 
   render() {
     const display = this.state.data.map(card => {
       return <p>{card.real_name}</p>
+      let sideScheme
+if (this.state.wrecker === true){
+  sideScheme == <WreckingCrew/>
+}else{
+  sideScheme ==       <SideScheme selectedScheme={this.state.sideScheme}/>
+}
     })
     return (
       <div className="main">
       <h1>Villain Finder</h1>
-      <button className="clicker" onClick={this.sort}>click</button>
       <button className="scheme" onClick={this.schemeSort}>Scheme</button>
       <Scheme  selectedScheme={this.state.mainScheme}/>
       <SideScheme selectedScheme={this.state.sideScheme}/>
