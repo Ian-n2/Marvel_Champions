@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import Scheme from "./scheme/Scheme.js"
-import SideScheme from "./scheme/SideScheme.js"
-import WreckingCrew from "./scheme/WreckingCrew.js"
-import {randomScheme} from "./helpers/helpers.js"
+import Scheme from "./scheme/Scheme.js";
+import SideScheme from "./scheme/SideScheme.js";
+import WreckingCrew from "./scheme/WreckingCrew.js";
+import {randomScheme} from "./helpers/helpers.js";
 import './Stylesheet.css';
+import {redirect} from "react-router-dom";
 
 class App extends React.Component {
 
@@ -79,15 +80,23 @@ class App extends React.Component {
       }
     },100)
 
+    setTimeout(() =>{
+      if(this.state.mainScheme.real_name === "Green Goblin"||"Norman Osbourne"){
+        this.setState({greenGoblin: true})
+      }else{
+        this.setState({greenGoblin: false})
+      }
+    },100)
+
   }
 
-//   setTimeout(() =>{
-//      changeWrecker(){
-//     if(this.state.mainScheme.real_name === "Wrecker"){
-//       this.setState({wrecker: true})
-//     }
-//   },1000)
-// }
+  //   setTimeout(() =>{
+  //      changeWrecker(){
+  //     if(this.state.mainScheme.real_name === "Wrecker"){
+  //       this.setState({wrecker: true})
+  //     }
+  //   },1000)
+  // }
 
 
   componentDidMount(){
@@ -112,14 +121,20 @@ class App extends React.Component {
   // const display = this.state.data.map(card => {
   // return <p>{card.real_name}</p>
   // const display = this.state.data.map(card => {
-    //   return <p>{card.real_name}</p>
+  //   return <p>{card.real_name}</p>
 
   render() {
-      let sideScheme
-      if (this.state.wrecker === true){
-        sideScheme = <WreckingCrew/>
-      }else{
-        sideScheme = <SideScheme selectedScheme={this.state.sideScheme}/>
+    let sideScheme
+    if (this.state.wrecker === true){
+      sideScheme = <WreckingCrew/>
+    }else{
+      sideScheme = <SideScheme selectedScheme={this.state.sideScheme}/>
+    }
+    let addOn
+    if (this.state.greenGoblin === true){
+      addOn = <button className="GoblinGadgets" type="checkbox">Add Goblin Gadgets</button>
+    }else{
+      addOn = <h2>Good Luck</h2>
     }
     return (
       <div className="main">
