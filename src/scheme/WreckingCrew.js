@@ -9,7 +9,7 @@ class WreckingCrew extends React.Component {
       return null
     return (
       <div className="name">
-      <img src={this.props.wreckingCrew.imagesrc}/>
+      <h1>we are the crew!!</h1>
       </div>
     );
   }
