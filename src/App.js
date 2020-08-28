@@ -81,13 +81,12 @@ class App extends React.Component {
     },100)
 
     setTimeout(() =>{
-      if(this.state.mainScheme.real_name === "Green Goblin"||"Norman Osbourne"){
+      if(this.state.mainScheme.real_name === "Green Goblin"){
         this.setState({greenGoblin: true})
       }else{
         this.setState({greenGoblin: false})
       }
     },100)
-
   }
 
   //   setTimeout(() =>{
@@ -126,13 +125,13 @@ class App extends React.Component {
   render() {
     let sideScheme
     if (this.state.wrecker === true){
-      sideScheme = <WreckingCrew/>
+      sideScheme = <WreckingCrew wreckingCrew={this.state.wreckingCrew}/>
     }else{
       sideScheme = <SideScheme selectedScheme={this.state.sideScheme}/>
     }
     let addOn
     if (this.state.greenGoblin === true){
-      addOn = <button className="GoblinGadgets" type="checkbox">Add Goblin Gadgets</button>
+      addOn = <h2>For a real challange why not add the Goblin Gimmicks</h2>
     }else{
       addOn = <h2>Good Luck</h2>
     }
@@ -142,6 +141,7 @@ class App extends React.Component {
       <button className="scheme" onClick={this.schemeSort}>Scheme</button>
       <Scheme  selectedScheme={this.state.mainScheme}/>
       {sideScheme}
+      {addOn}
       </div>
     );
   }

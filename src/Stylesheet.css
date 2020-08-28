@@ -39,3 +39,11 @@ h1{
   font-size: 50px;
   font-family: sans-serif;
 }
+
+.crew{
+  font-size: 50px;
+  font-family: sans-serif;
+  image {
+    height: 300px;
+  }
+}
