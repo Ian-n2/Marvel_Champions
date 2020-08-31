@@ -18,7 +18,8 @@ class App extends React.Component {
       data: [],
       wrecker: false,
       greenGoblin: false,
-      wreckingCrew:null
+      wreckingCrew:null,
+      norman: false
     }
     this.sort =this.sort.bind(this);
     this.schemeSort = this.schemeSort.bind(this);
@@ -63,6 +64,7 @@ class App extends React.Component {
       }else{
         hero.push(card)
       }
+      console.log(mainScheme)
     })
 
     const selectedMainScheme = randomScheme(mainScheme)
@@ -85,6 +87,14 @@ class App extends React.Component {
         this.setState({greenGoblin: true})
       }else{
         this.setState({greenGoblin: false})
+      }
+    },100)
+
+    setTimeout(() =>{
+      if(this.state.mainScheme.real_name === "Norman Osborn"){
+        this.setState({norman: true})
+      }else{
+        this.setState({norman: false})
       }
     },100)
   }
@@ -132,7 +142,9 @@ class App extends React.Component {
     let addOn
     if (this.state.greenGoblin === true){
       addOn = <h2>For a real challange why not add the Goblin Gimmicks</h2>
-    }else{
+    }else if (this.state.norman === true){
+      addOn = <h2>For a real challange why not add the Goblin Gimmicks</h2>
+  }else{
       addOn = <h2>Good Luck</h2>
     }
     return (

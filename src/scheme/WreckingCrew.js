@@ -3,18 +3,23 @@ import './../Stylesheet.css';
 
 
 
+
 class WreckingCrew extends React.Component {
 
 
   render() {
     if (this.props.wreckingCrew === null)
     return null
+    else
     return(
     <div className="crew">
-    <h1>Here comes the crew</h1>
-    <h3>{this.props.wreckingCrew.real_name}</h3>
-    <img src='./images/Piledriver.png'/>
-      </div>
+    <h5>And his crew</h5>
+    {
+      this.props.wreckingCrew.map(function(crew, index){
+        return <img src={crew.imagesrc}/>
+      })
+    }
+  </div>
     )
   }
 }
