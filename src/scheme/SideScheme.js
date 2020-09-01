@@ -5,7 +5,6 @@ class SideScheme extends React.Component {
 
 
   render() {
-    console.log(this.props)
     if (this.props.selectedScheme === null)
       return null
     return (

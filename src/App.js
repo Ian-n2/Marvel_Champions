@@ -5,6 +5,8 @@ import WreckingCrew from "./scheme/WreckingCrew.js";
 import {randomScheme} from "./helpers/helpers.js";
 import './Stylesheet.css';
 import {redirect} from "react-router-dom";
+import Welcome from "./scheme/Welcome.js";
+
 
 class App extends React.Component {
 
@@ -64,7 +66,6 @@ class App extends React.Component {
       }else{
         hero.push(card)
       }
-      console.log(mainScheme)
     })
 
     const selectedMainScheme = randomScheme(mainScheme)
@@ -133,6 +134,12 @@ class App extends React.Component {
   //   return <p>{card.real_name}</p>
 
   render() {
+    let welcome
+    if (this.state.mainScheme === null){
+      welcome = <Welcome/>
+    }else{
+      welcome = null
+    }
     let sideScheme
     if (this.state.wrecker === true){
       sideScheme = <WreckingCrew wreckingCrew={this.state.wreckingCrew}/>
@@ -144,13 +151,17 @@ class App extends React.Component {
       addOn = <h2>For a real challange why not add the Goblin Gimmicks</h2>
     }else if (this.state.norman === true){
       addOn = <h2>For a real challange why not add the Goblin Gimmicks</h2>
-  }else{
+    }else if (this.state.mainScheme === null){
       addOn = <h2>Good Luck</h2>
+    }else{
+      addOn = null
+
     }
     return (
       <div className="main">
       <h1>Villain Finder</h1>
-      <button className="scheme" onClick={this.schemeSort}>Scheme</button>
+      {welcome}
+      <button className="scheme" onClick={this.schemeSort}>Find Villain</button>
       <Scheme  selectedScheme={this.state.mainScheme}/>
       {sideScheme}
       {addOn}

@@ -6,17 +6,17 @@ body{
 
 .main{
   text-align: center;
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
 }
 
 h1{
   margin: 0;
-  font-family: sans-serif;
-  color: black;
+  font-family: 'Bangers', cursive;  color: black;
   text-align: center;
   font-size: 50px
 
 }
-
 .scheme{
   margin: 0;
   text-align: center;
@@ -24,6 +24,7 @@ h1{
   transition-duration: 0.4s;
   background-color: grey;
   width: 50%;
+  font-family: 'Bangers', cursive;
 }
 .scheme:hover{
   background-color: green;
@@ -32,15 +33,16 @@ h1{
 
 .clicker{
   text-align: left;
-
 }
-
 .name{
   font-size: 50px;
-  font-family: sans-serif;
+  font-family: 'Bangers', cursive;
 }
-
 .crew{
   font-size: 50px;
-  font-family: sans-serif;
+  font-family: 'Bangers', cursive;
+}
+.welcome{
+  font-family: 'Bangers', cursive;
+  font-size: 50px;
 }
