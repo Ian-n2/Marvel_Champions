@@ -4,7 +4,6 @@ import SideScheme from "./scheme/SideScheme.js";
 import WreckingCrew from "./scheme/WreckingCrew.js";
 import {randomScheme} from "./helpers/helpers.js";
 import './Stylesheet.css';
-import {redirect} from "react-router-dom";
 import Welcome from "./scheme/Welcome.js";
 
 
